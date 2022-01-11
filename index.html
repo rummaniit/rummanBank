@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Rumman's Bank</title>
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <div id="login-area">
+        <h1 class="text-center">Welcome To Rumman's Bank</h1>
+        <div class="information">
+            <h3>Login Here</h3>
+            <input type="text" class="form-control" placeholder="Email">
+            <br>
+            <input type="password" class="form-control" placeholder="Password">
+            <br>
+            <button class="btn btn-success" id="clk">Enter</button>
+        </div>
+    </div>
+    <div id="transaction-area">
+        <h2>Transaction Area</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="deposite common">
+                    <h4>Deposite</h4>
+                    <h2>$- <span id="currentValue">00</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="widraw common">
+                    <h4>Widraw</h4>
+                    <h2>$- <span id="currentValw">00</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="total common">
+                    <h4>Total</h4>
+                    <h2>$- <span id="totalBalance">00</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="information">
+                    <h3>Deposite</h3>
+                    <input id="deposite-amount" class="form-control" type="text"
+                        placeholder="$ amount you want to deposite">
+                    <br>
+                    <button id="deposite-button" class="btn btn-success">Deposite</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="information">
+                    <h3>Widraw</h3>
+                    <input id="withdraw-amount" class="form-control" type="text"
+                        placeholder="$ amount you want to widraw">
+                    <br>
+                    <button id="withdraw-button" class="btn btn-success">Withdraw</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        //login section
+        let buttonClick = document.getElementById('clk')
+        buttonClick.addEventListener('click', function () {
+            let logineffect = document.getElementById('login-area')
+            logineffect.style.display = 'none'
+            let transactionArea = document.getElementById('transaction-area')
+            transactionArea.style.display = 'block'
+        })
+        //Deposite button section
+        let depositeButton = document.getElementById('deposite-button')
+        depositeButton.addEventListener('click', function () {
+            let depositeAmount = document.getElementById('deposite-amount').value
+            let depositeAmountFloat = parseFloat(depositeAmount)
+
+            let CurrentVal = document.getElementById('currentValue').innerText
+            let CurrentValFloat = parseFloat(CurrentVal)
+            document.getElementById('deposite-amount').value = ""
+
+            let total = depositeAmountFloat + CurrentValFloat
+            document.getElementById('currentValue').innerText = total
+
+            //Total balance 
+            let totalbalance = document.getElementById('totalBalance').innerText
+            let totalbalanceFloat = parseFloat(totalbalance)
+            let finalValue = depositeAmountFloat + totalbalanceFloat
+            document.getElementById('totalBalance').innerText = finalValue
+
+
+        })
+
+
+        //Withdraw button section
+        let withdrawbutton = document.getElementById('withdraw-button')
+        withdrawbutton.addEventListener('click', function () {
+            let withdrawAmount = document.getElementById('withdraw-amount').value
+            let withdrawAmountFloat = parseFloat(withdrawAmount)
+
+            let currentValwithdraw = document.getElementById('currentValw').innerText
+            let currentValwithdrawFloat = parseFloat(currentValwithdraw)
+            document.getElementById('withdraw-amount').value = ""
+            document.getElementById('currentValw').innerText = withdrawAmountFloat
+
+            //let remaining = currentValwithdrawFloat - withdrawAmountFloat
+            //document.getElementById('currentValw').innerText = remaining
+
+            let totalbalance = document.getElementById('totalBalance').innerText
+            let totalbalanceFloat = parseFloat(totalbalance)
+            let finalVal = totalbalanceFloat - withdrawAmountFloat
+            document.getElementById('totalBalance').innerText = finalVal
+        })
+    </script>
+</body>
+
+</html>

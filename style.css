@@ -1,0 +1,28 @@
+body{
+    padding: 100px;
+}
+.information{
+    margin-top: 30px;
+    padding: 40PX;
+    box-shadow: 10px 5px 20px gray;
+    border-radius: 20px;
+}
+#transaction-area{
+    display: none;
+    text-align: center;
+}
+.deposite{
+    background-color: salmon;
+}
+.widraw{
+    background-color: slateblue;
+}
+.total{
+    background-color: orange;
+}
+.common{
+    color: wheat;
+    margin: 20px 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
